@@ -1,0 +1,84 @@
+<!-- Contenedor principal del reproductor multimedia -->
+<div class="media-player">
+    <!-- Contenedor interno del reproductor multimedia -->
+    <div class="media-player--wrapper">
+        
+        <!-- Zona del artista utilizando un ng-template llamado 'artistZone' -->
+        <div class="artist player-center">
+            <ng-container *ngTemplateOutlet="artistZone"></ng-container>
+        </div>
+        
+        <!-- Zona del reproductor utilizando un ng-template llamado 'playerZone' -->
+        <div class="artist player-center">
+            <ng-container *ngTemplateOutlet="playerZone"></ng-container>
+        </div>
+        
+        <!-- Zona del reproductor de audio utilizando un ng-template llamado 'playerAudio' -->
+        <div class="artist player-center">
+            <ng-container *ngTemplateOutlet="playerAudio"></ng-container>
+        </div>
+    </div>
+</div>
+
+<!-- Plantilla del ng-template 'artistZone' para la información del artista -->
+<ng-template #artistZone>
+    <div class="artist-inside" *ngIf="multiServ.trackInfo$ | async as trackInfo">
+        <!-- Muestra la portada del álbum utilizando la propiedad 'cover' de la pista -->
+        <img [src]="trackInfo.cover" class="cover">
+        
+        <!-- Muestra información detallada de la pista -->
+        <div class="track-info">
+            <h3 class="track-title">{{trackInfo.name}}</h3>
+            <h5 class="track-title sub-title">{{trackInfo.album}}</h5>
+        </div>
+        
+        <!-- Botón de 'Me gusta' y corazón para indicar preferencia por la pista -->
+        <div class="track-like">
+            <button class="btn-like"></button>
+            <i class="uil uil-heart"></i>
+        </div>
+    </div>
+</ng-template>
+
+<!-- Plantilla del ng-template 'playerZone' para los controles del reproductor -->
+<ng-template #playerZone>
+    <div class="player-controls-inside">
+        <!-- Botones de control del reproductor (anterior, reproducción, siguiente) -->
+        <div class="buttons-media">
+            <button class="arrow btn">
+                <i class="uil uil-previous"></i>
+            </button>
+            <button class="play btn">
+                <i class="uil uil-play-circle"></i>
+            </button>
+            <button class="arrow btn">
+                <i class="uil uil-step-forward"></i>
+            </button>
+        </div>
+        
+        <!-- Barra de progreso del tiempo de reproducción y duración de la pista -->
+        <div class="media-linetime">
+            <div class="time">0:00</div>
+            <span #progressBar class="time-progress">
+                <span class="time-progress-live" [style.width]="99+'%'"></span>
+            </span>
+            <div class="time">3:57</div>
+        </div>
+    </div>
+</ng-template>
+
+<!-- Plantilla del ng-template 'playerAudio' para los controles de audio -->
+<ng-template #playerAudio>
+    <div class="player-audio-inside">
+        <!-- Botones de control de la lista de reproducción, volumen y configuración de audio -->
+        <button class="btn-media">
+            <i class="uil uil-list-ui-alt"></i>
+        </button>
+        <button class="btn-media">
+            <i class="uil uil-volume-off"></i>
+        </button>
+        <button class="btn-media">
+            <i class="uil uil-boombox"></i>
+        </button>
+    </div>
+</ng-template>

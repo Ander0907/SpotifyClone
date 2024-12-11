@@ -1,0 +1,10 @@
+<!-- Estructura HTML para la página de pistas de audio -->
+<div class="tracks-page">
+    
+    <!-- Componente 'app-section-generic' que muestra una lista de pistas en modo pequeño ('small') -->
+    <app-section-generic [dataTracks]="tracksList" [mode]="'small'" [title]="'Canciones escuchadas recientemente'"></app-section-generic>
+    
+    <!-- Componente 'app-section-generic' que muestra una lista de pistas en modo grande ('big') -->
+    <app-section-generic [dataTracks]="tracksListReverse" [mode]="'big'" [title]="'Para ti'"></app-section-generic>
+
+</div>

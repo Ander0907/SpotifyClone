@@ -1,0 +1,17 @@
+<!-- Contenedor principal de la sección genérica -->
+<div class="section--generic">
+    <!-- Título de la sección -->
+    <h1 class="section--generic__title">{{title}}</h1>
+    
+    <!-- Zona de reproductores de la sección -->
+    <div class="section--generic__player--zone">
+        <!-- Lista de reproductores, con clases condicionales según el modo de visualización -->
+        <ul class="player--list" [ngClass]="{'card-small' : mode == 'small', 'card-big' : mode == 'big'}">
+            
+            <!-- Itera sobre cada pista de audio y crea un componente 'app-card-player' para cada una -->
+            <li *ngFor="let track of dataTracks">
+                <app-card-player [mode]="mode" [track]="track"></app-card-player>
+            </li>
+        </ul>
+    </div>
+</div>

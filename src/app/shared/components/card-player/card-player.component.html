@@ -1,0 +1,46 @@
+<!-- Diseño del modo (small) -->
+<div *ngIf="mode === 'small'" class="card-player player-small">
+    <!-- Muestra la portada de la pista utilizando la propiedad 'cover' de la pista -->
+    <img [src]="track.cover" [alt]="track.name" class="cover">
+    
+    <!-- Muestra el nombre de la pista en el contenido del reproductor -->
+    <div class="content-player">
+        {{track.name}}
+    </div>
+    
+    <!-- Botones de control del reproductor en el modo pequeño -->
+    <div class="buttons-player">
+        <!-- Botón de reproducción, actualmente siempre visible (*ngIf="true") -->
+        <button *ngIf="true" class="play-btn">
+            <!-- Icono de reproducción -->
+            <i class="uil uil-play"></i>
+        </button>
+        <!-- <button *ngIf="true" class="play-btn">
+            <i class="uil uil-play"></i>
+        </button>| -->
+    </div>
+</div>
+
+<!-- Diseño del modo (big) -->
+<div *ngIf="mode === 'big'" class="card-player player-big">
+    <!-- Muestra la portada de la pista utilizando la propiedad cover de la pista -->
+    <img [src]="track.cover" [alt]="track.name" class="cover">
+    
+    <!-- Contenido detallado del reproductor en el modo grande -->
+    <div class="content-player">
+        <!-- Muestra el nombre de la pista -->
+        <div class="title-track">{{track.name}}</div>
+        
+        <!-- Muestra el nombre del álbum de la pista -->
+        <div class="sub-title-tracks">{{track.album}}</div>
+    </div>
+    
+    <!-- Botones de control del reproductor en el modo grande -->
+    <div class="buttons-player">
+        <!-- Botón de reproducción con un enlace al método 'sendPlay' en el componente -->
+        <button (click)="sendPlay(track)" *ngIf="true" class="play-btn">
+            <!-- Icono de reproducción -->
+            <i class="uil uil-play"></i>
+        </button>
+    </div>
+</div>
